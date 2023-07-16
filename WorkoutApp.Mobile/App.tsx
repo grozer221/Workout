@@ -6,13 +6,14 @@ import { PaperProvider } from 'react-native-paper';
 import { NavigationContainer } from '@react-navigation/native';
 import { theme } from './constants/theme';
 import BottomTabNavigator from './navigation/TabNavigator';
+import DrawerNavigator from './navigation/DrawerNavigator';
 
 export default function App() {
   return (
     <ApolloProvider client={client}>
       <PaperProvider theme={theme}>
         <NavigationContainer>
-          <BottomTabNavigator />
+          <DrawerNavigator  />
         </NavigationContainer>
       </PaperProvider>
     </ApolloProvider>

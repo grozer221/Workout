@@ -1,4 +1,3 @@
-
 import React from "react";
 import { View, Button, Text, StyleSheet } from "react-native";
 import { NativeStackScreenProps } from 'react-native-screens/native-stack';
@@ -6,7 +5,7 @@ import { MainStackNavigatorParamList } from '../../types/navigation';
 
 type Props = NativeStackScreenProps<MainStackNavigatorParamList, 'Home'>;
 
-const Home = ({navigation}: Props) => {
+const Home = ({ navigation }: Props) => {
   return (
     <View style={styles.center}>
       <Text>This is the home screen</Text>
