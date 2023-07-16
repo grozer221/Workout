@@ -6,27 +6,39 @@ query {
   auth {
     me {
       user {
-        id
+        ...UserFragment
       }
       token
     }
   }
 }
+${userFragment}
 `;
 
-export const loginMutation = gql`
-  mutation{
-    auth{
-        login(input: {
-          email: "smjthebest@gmail.com",
-          password: "123",
-        })
-      {
-        token
-        user {
-          email
-        }
+export const authLogin = gql`
+mutation ($input: AuthLoginInputType!){
+  auth {
+    login(input: $input) {
+      token
+      user {
+        ...UserFragment
       }
     }
   }
+}
+${userFragment}
+`;
+
+export const registerLogin = gql`
+mutation ($input: AuthRegisterInputType!){
+  auth {
+    register(input: $input) {
+      token
+      user {
+        ...UserFragment
+      }
+    }
+  }
+}
+${userFragment}
 `;

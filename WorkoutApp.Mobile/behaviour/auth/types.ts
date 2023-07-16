@@ -1,14 +1,34 @@
 import { User } from '../users/types';
 
-export type loginData = {
+export type AuthMeData = {
   auth: {
-    login: { token: string; user: { email: string } }
+    me: AuthResponse
   }
 }
 
-export type authMeData = {
+export type AuthLoginVars = {
+  input: {
+    email: string;
+    password: string;
+  }
+}
+export type AuthLoginData = {
   auth: {
-    me: AuthResponse
+    login: AuthResponse
+  }
+}
+
+export type AuthRegisterVars = {
+  input: {
+    email: string;
+    password: string;
+    firstName: string;
+    lastName: string;
+  }
+}
+export type AuthRegisterData = {
+  auth: {
+    register: AuthResponse
   }
 }
 

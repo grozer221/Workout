@@ -1,21 +1,56 @@
-import React from "react";
-import { View, Button, Text, StyleSheet } from "react-native";
+import React, { useEffect } from "react";
+import { StyleSheet, TouchableOpacity, RefreshControl, ScrollView, View } from "react-native";
+import { Text } from 'react-native-paper';
+import { useLazyQuery } from '@apollo/client';
+import { ListWorkoutData } from '../../behaviour/workouts/types';
+import { listWorkout } from '../../behaviour/workouts/queries';
+import { useFocusEffect, useIsFocused } from '@react-navigation/native';
+import { getTime } from '../../utils/momentUtils';
+import { useAppEffect } from '../../hooks/useAppEffect';
+import moment, { duration } from 'moment';
 
-const Workouts = () => {
+export const Workouts = () => {
+  const [list, {data}] = useLazyQuery<ListWorkoutData>(listWorkout, {fetchPolicy: 'no-cache'});
+  const [refreshing, setRefreshing] = React.useState(false);
+  const isFocused = useIsFocused();
+
+  useAppEffect(() => {
+    console.log('effect');
+    list();
+  }, [isFocused]);
+
+  const onRefresh = async () => {
+    setRefreshing(true);
+    try {
+      await list();
+    } finally {
+      setRefreshing(false);
+    }
+  };
+
   return (
-    <View style={styles.center}>
-      <Text>This is the workouts screen</Text>
-    </View>
+    <ScrollView
+      contentContainerStyle={styles.wrapper}
+      refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}>
+      {data?.workout.list.map(workout => (
+        <TouchableOpacity key={workout.id}>
+          <View style={styles.row}>
+            <Text>{getTime(workout.dateStart)} - {getTime(workout.dateEnd)}</Text>
+            <Text>{duration(moment(workout.dateEnd).diff(moment(workout.dateStart))).asMinutes().toFixed(1)} minutes</Text>
+          </View>
+        </TouchableOpacity>
+      ))}
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
-  center: {
+  wrapper: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    textAlign: "center",
   },
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    padding: 5,
+  }
 });
-
-export default Workouts;

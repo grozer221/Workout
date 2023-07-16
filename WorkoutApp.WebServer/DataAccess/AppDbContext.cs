@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
 using WorkoutApp.WebServer.Business;
+using WorkoutApp.WebServer.Business.Models;
 
 namespace WorkoutApp.WebServer.DataAccess
 {
@@ -15,6 +16,8 @@ namespace WorkoutApp.WebServer.DataAccess
         public DbSet<User> Users { get; set; }
 
         public DbSet<Session> Sessions { get; set; }
+
+        public DbSet<Workout> Workouts { get; set; }
 
 
         public const string DefaultConnectionString = "Data Source=localhost;Initial Catalog=WorkoutApp_dev;Integrated Security=True;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;";
@@ -62,7 +65,6 @@ namespace WorkoutApp.WebServer.DataAccess
             {
                 entity.HasIndex(e => e.Token).IsUnique();
             });
-
         }
     }
 }

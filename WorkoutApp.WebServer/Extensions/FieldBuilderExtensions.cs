@@ -7,7 +7,6 @@ namespace WorkoutApp.WebServer.Extensions
         public static FieldBuilder<TSourceType, object> Resolve<TSourceType>(this FieldBuilder<TSourceType, object> fieldBuilder)
             => fieldBuilder.Resolve(_ =>
             {
-                Console.WriteLine("11");
                 return new { };
             });
     }

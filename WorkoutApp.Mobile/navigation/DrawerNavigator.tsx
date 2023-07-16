@@ -4,10 +4,13 @@ import { DrawerNavigatorParams } from '../types/navigation';
 import { ExercisesTabNavigator } from './ExercisesTabNavigator';
 import { WorkoutsTabNavigator } from './WorkoutsTabNavigator';
 import { useAppTexts } from '../hooks/useAppTexts';
+import { LoginScreen } from '../components/auth/LoginScreen';
+import { useAppSelector } from '../behaviour/store';
 
 const Drawer = createDrawerNavigator<DrawerNavigatorParams>();
 
 const DrawerNavigator = () => {
+  const isAuthorized = useAppSelector(s => s.auth.isAuthorized);
   const T = useAppTexts();
 
   return (
@@ -22,6 +25,13 @@ const DrawerNavigator = () => {
         component={ExercisesTabNavigator}
         options={{title: T.Exercises}}
       />
+      {!isAuthorized && (
+        <Drawer.Screen
+          name="DrawerLogin"
+          component={LoginScreen}
+          options={{title: T.Login}}
+        />
+      )}
     </Drawer.Navigator>
   );
 };

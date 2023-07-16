@@ -15,4 +15,5 @@ export type ExercisesTabNavigatorParams = {
 export type DrawerNavigatorParams = {
   DrawerWorkouts: undefined;
   DrawerExercises: undefined;
+  DrawerLogin: undefined;
 };

@@ -12,12 +12,12 @@ import { getAppTexts } from './behaviour/appTexts/queries';
 import { appTextsActions } from './behaviour/appTexts/slice';
 import { authActions } from './behaviour/auth/slice';
 import { authMe } from './behaviour/auth/queries';
-import { authMeData } from './behaviour/auth/types';
+import { AuthMeData } from './behaviour/auth/types';
 import { getAppTextsData } from './behaviour/appTexts/types';
 
 export default function App() {
   useEffect(() => {
-    client.query<authMeData>({query: authMe})
+    client.query<AuthMeData>({query: authMe})
       .then(res => store.dispatch(authActions.login(res.data.auth.me)))
       .catch(() => {
       });
@@ -35,7 +35,7 @@ export default function App() {
             colors: {
               primary: theme.colors.primary,
               background: theme.colors.background,
-              text: 'white',
+              text: theme.colors.onSurface,
               card: theme.colors.surface,
               border: 'rgb(0, 0, 0)',
               notification: 'yellow',
