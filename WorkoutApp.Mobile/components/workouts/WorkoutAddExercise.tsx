@@ -1,10 +1,11 @@
 import React from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet } from "react-native";
+import { Text } from 'react-native-paper';
 
-const Contact = () => {
+export const WorkoutAddExercise = () => {
   return (
     <View style={styles.center}>
-      <Text>This is the contact screen</Text>
+      <Text>This is the workout add Exercises screen</Text>
     </View>
   );
 };
@@ -18,4 +19,3 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Contact;

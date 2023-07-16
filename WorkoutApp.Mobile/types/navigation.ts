@@ -1,18 +1,18 @@
-export type MainStackNavigatorParamList = {
-  Home: undefined;
-  About: undefined;
+export type CurrentWorkoutStackNavigatorParams = {
+  CurrentWorkout: undefined;
+  CurrentWorkoutAddExercise: undefined;
 };
 
-export type ContactStackNavigatorParamList = {
-  Contact: undefined;
+export type WorkoutsTabNavigatorParams = {
+  TabCurrentWorkout: undefined;
+  TabWorkouts: undefined;
 };
 
-export type TabNavigatorParamList = {
-  TabHome: undefined;
-  TabContact: undefined;
+export type ExercisesTabNavigatorParams = {
+  Exercises: undefined;
 };
 
-export type DrawerNavigatorParamList = {
-  DrawerHome: undefined;
-  DrawerContact: undefined;
+export type DrawerNavigatorParams = {
+  DrawerWorkouts: undefined;
+  DrawerExercises: undefined;
 };

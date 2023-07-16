@@ -24,4 +24,13 @@
 	<PackageReference Include="GraphQL.Upload.AspNetCore" Version="2.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="AppTexts\AppTexts_UA.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="AppTexts\AppTexts_EN.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>

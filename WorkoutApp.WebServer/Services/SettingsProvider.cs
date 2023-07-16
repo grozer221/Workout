@@ -10,3 +10,8 @@ public class SettingsProvider : ISettingsProvider
         return "11fasefoi[aenfgaergnikaernjgerg;[paerwg;oearga;perig";
     }
 }
+
+public interface ISettingsProvider
+{
+    string GetAuthSecurityKey();
+}

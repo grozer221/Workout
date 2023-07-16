@@ -1,13 +1,12 @@
 import { gql } from '@apollo/client';
+import { userFragment } from '../users/queries';
 
-export const meQuery = gql`
+export const authMe = gql`
 query {
   auth {
     me {
-      user{
-        email
-        firstName
-        lastName
+      user {
+        id
       }
       token
     }

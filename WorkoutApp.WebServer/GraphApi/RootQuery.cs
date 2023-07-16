@@ -1,5 +1,7 @@
 ﻿using GraphQL.Types;
+
 using WorkoutApp.WebServer.Extensions;
+using WorkoutApp.WebServer.GraphApi.Modules.AppTexts;
 using WorkoutApp.WebServer.GraphApi.Modules.Auth;
 
 namespace WorkoutApp.WebServer.GraphApi
@@ -10,6 +12,10 @@ namespace WorkoutApp.WebServer.GraphApi
         {
             Field<AuthQuery>()
                 .Name("Auth")
+                .Resolve();
+
+            Field<AppTextsQuery>()
+                .Name("AppTexts")
                 .Resolve();
         }
 

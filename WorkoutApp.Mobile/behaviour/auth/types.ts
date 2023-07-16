@@ -1,18 +1,18 @@
+import { User } from '../users/types';
+
 export type loginData = {
   auth: {
     login: { token: string; user: { email: string } }
   }
 }
 
-export type meData = {
+export type authMeData = {
   auth: {
-    me: {
-      token: string;
-      user: {
-        email: string;
-        firstName: string;
-        lastName: string;
-      }
-    }
+    me: AuthResponse
   }
 }
+
+export type AuthResponse = {
+  user: User;
+  token: string;
+};
