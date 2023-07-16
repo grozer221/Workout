@@ -5,7 +5,7 @@ import React, { useEffect } from 'react';
 import { loginData, meData } from '../../../behaviour/auth/types';
 import { asyncStorageSetItem } from '../../../utils/asyncStorageUtils';
 import { NativeStackScreenProps } from 'react-native-screens/native-stack';
-import { RootStackParamList } from '../../../App';
+import { RootStackParamList } from '../../../types/navigation';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Login'>;
 
